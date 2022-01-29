@@ -13,16 +13,14 @@ const app = express();
 //     res.sendFile(path.resolve("frontend", "index.html"));
 // });
 
-// // port 실행
-// // app.listen(process.env.PORT || 3000, () => console.log("server running"));
-// node.js 서버 설정
-// app.listen(3000);
-
 app.get('/', function(req, res) {
     res.send('hello');
 })
 
+// node.js 서버 설정
 var port = 3000;
+
+// // port 실행
 app.listen(port, function() {
     console.log('server on! http://localhost:'+port);
 })

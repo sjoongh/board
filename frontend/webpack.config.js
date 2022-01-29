@@ -1,41 +1,32 @@
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
-// const { resolve } = require('path')
+// const path = require('path');
 
 // module.exports = {
-//     mode: 'development',
-//   entry: {
-//     index: './src/index.js'
-//   },
-
+//   // enntry file
+//   entry: './src/index.js',
+//   // 컴파일 + 번들링된 js 파일이 저장될 경로와 이름 지정
 //   output: {
-//     path: resolve(__dirname, './dist'),
-//     filename: '[name].js'
+//     path: path.resolve(__dirname, 'dist/js'),
+//     filename: 'bundle.js'
 //   },
-
-//   plugins: [
-//     new HtmlWebpackPlugin({
-//       filename: 'index.html', // output file name
-//       template: 'index.html'  // template file name
-//     }),
-//     new MiniCssExtractPlugin({ filename: 'app.css' }),
-//     new CleanWebpackPlugin({
-//       cleanAfterEveryBuildPatterns: ['dist']
-//     })
-//   ],
-
 //   module: {
 //     rules: [
 //       {
 //         test: /\.js$/,
-//         loader: 'babel-loader'
-//       },
-//       {
-//         test: /\.css$/,
-//         use: [MiniCssExtractPlugin.loader, 'css-loader']
+//         include: [
+//           path.resolve(__dirname, 'src/js')
+//         ],
+//         exclude: /node_modules/,
+//         use: {
+//           loader: 'babel-loader',
+//           options: {
+//             presets: ['@babel/preset-env'],
+//             plugins: ['@babel/plugin-proposal-class-properties']
+//           }
+//         }
 //       }
 //     ]
-//   }
-// }
+//   },
+//   devtool: 'source-map',
+//   // https://webpack.js.org/concepts/mode/#mode-development
+//   mode: 'development'
+// };

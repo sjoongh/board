@@ -58,15 +58,17 @@ const router = async () => {
         };
     });
     let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
-
+    console.log(match)
     if (!match) {
         match = {
             route: location.pathname,
             isMatch: true,
         };
         const page = new NotFound();
+        console.log('hey');
         document.querySelector('#root').innerHTML = await page.getHtml();
     } else {
+        console.log('hey2');
         const page = new match.route.view();
         document.querySelector('#root').innerHTML = await page.getHtml();
     }

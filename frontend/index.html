@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>spa-router-example</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <div id="app"></div>
-  <script src="./src/router/router.js"></script>
+  <nav class="nav">
+    <a href="/" class="nav_item" data-link>Home</a>
+    <a href="/board" class="nav_item" data-link>Board</a>
+</nav>
+<div id="root"></div>
+<script type="module" src="./src/index.js"></script>
 </body>
 </html>

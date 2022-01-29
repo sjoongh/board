@@ -5,7 +5,7 @@ import NotFound from './components/NotFound'
 
 const router = async () => {
     const routes = [
-        { path: '/', view: Home },
+        { path: '/*', view: Home },
         { path: '/board', view: Board }
     ];
 

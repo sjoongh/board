@@ -1,6 +1,6 @@
 export default class {
     constructor() {
-        document.title = "Home"
+        document.title = "home"
     }
     async getHtml() {
         return `
