@@ -1,48 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글</title>
+  <meta charset="UTF-8">
+  <title>spa-router-example</title>
 </head>
 <body>
-    <h1>게시글</h1>
-
-    <!-- 게시물 검색 -->
-    <div id="searchdata">
-        <input type="inputText" class="search" placeholder="게시글을 찾아보세요." autofocus>
-        <!-- inputtext를 사용해서 버튼 클릭시 해당 data 가져오기 ==> 해당 문장이 포함된 게시물 전부 가져오기 -->
-        <!-- submit 사용해야 할 듯 -->
-        <button>게시글제목검색</button>
-    </div>
-
-    <!-- 작성일 기준으로 내림차순/오름차순 정렬 -->
-
-    <!-- 정렬/검색 초기화 버튼 -->
-
-    <!-- 한 페이지에서 볼 수 있는 게시물의 개수를 선택하거나 입력하는 영역 -->
-
-    <!-- 페이지 새로고침(데이터 갱신), 캐시된 데이터를 갱신 -->
-
-    <!-- 게시물 목록 -->
-    <div class="column-lists">
-        <ul class="column-list">
-            <li class="column-items">
-                <a href="#" class="column-item">
-                    <div class="column-item-num"><span>1</span></div>
-                    <div class="column-item-title"><span>제목입니다.</span></div>
-                    <!-- 작성자 이름 클릭시 작성자가 작성한 게시물목록만 출력되도록 -->
-                    <div class="column-item-writer">신중호</div>
-                    <div class="column-item-date"><span>2022.01.21 14:00</span></div>
-                </a>
-                <!-- 수정하기 버튼을 클릭시 cu.html로 데이터 전송 -->
-                <button class="btn" onclick="location.href='cu.html'">수정하기</button>
-            </li>
-        </ul>
-    </div>
-
-    <!-- 게시물 작성-->
-    <button class="btn" href="#cu.html">작성하기</button>
+  <div id="app"></div>
+  <script src="./src/router/router.js"></script>
 </body>
 </html>

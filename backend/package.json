@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node service.js",
+    "e2e": "cypress run",
+    "e2e:open": "cypress open"
   },
   "author": "shinjoongho",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "supertest": "^6.2.2"
   }
 }
