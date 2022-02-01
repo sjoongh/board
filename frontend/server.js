@@ -9,4 +9,6 @@ app.get("/*", (req, res) => {
     res.sendFile(path.resolve("frontend", "index.html"));
 });
 
-app.listen(process.env.PORT || 3000, () => console.log("Service running..."));
+app.listen(process.env.PORT || 8080 || 3000, () => console.log("Service running..."));
+
+console.log("sibal");
