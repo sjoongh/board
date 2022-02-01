@@ -1,10 +1,10 @@
 export default class {
     constructor() {
-        document.title = "Home";
+        document.title = "Settings";
     }
     async getHtml() {
         return `
-            <h1>This is Home Page</h1>
+            <h1>This is Settings Page</h1>
         `;
     }
 }
