@@ -1,25 +1,22 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
   // enntry file
-  target: 'node',
-  entry: './server.js',
-  devServer: {
-    historyApiFallback: true,
-  },
+  // ./src/static/js/index.js
+  entry: ['@babel/polyfill', './frontend/static/js/index.js'],
   // 컴파일 + 번들링된 js 파일이 저장될 경로와 이름 지정
   output: {
-    // __dirname, 'dist/js'
-    path: path.resolve('./index.js'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.bundle.js'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, '/frontend')
+          // src
+          path.resolve(__dirname, 'frontend')
         ],
         exclude: /node_modules/,
         use: {
@@ -32,5 +29,15 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+        template: "./frontend/index.html"
+    })
+  ],
   devtool: 'source-map',
+  devServer: {
+    host: "localhost",
+    port: 8080,
+  },
+  mode: 'development'
 };
