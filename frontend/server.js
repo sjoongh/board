@@ -28,14 +28,16 @@ app.get("/", (req, res) => {
 // create board
 app.post("/create", (req, res) => {
     res.sendFile(path.resolve("src", "index.html"));
+    // send file
 })
 // update board
 app.post("/create", (req, res) => {
+    // 기존 data fetch 후 update
 
 })
 // delete board
 app.post("/create", (req, res) => {
-
+    // no로 게시물 찾은후 delete
 })
 
 app.listen(3000, () => console.log('Server is running... http://localhost:3000'));
