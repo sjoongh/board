@@ -1,3 +1,5 @@
+
+import Ajax from './ajax';
 import Home from "./pages/Home.js";
 import Posts from "./pages/Posts.js";
 import Settings from "./pages/Settings.js";

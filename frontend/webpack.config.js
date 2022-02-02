@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   // enntry file
   // ./src/static/js/index.js
-  entry: ['@babel/polyfill', './frontend/static/js/index.js'],
+  entry: ['@babel/polyfill', './src/js/index.js'],
   // 컴파일 + 번들링된 js 파일이 저장될 경로와 이름 지정
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -16,7 +16,7 @@ module.exports = {
         test: /\.js$/,
         include: [
           // src
-          path.resolve(__dirname, 'frontend')
+          path.resolve(__dirname, 'src')
         ],
         exclude: /node_modules/,
         use: {
@@ -31,7 +31,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: "./frontend/index.html"
+        template: "./src/index.html"
     })
   ],
   devtool: 'source-map',
