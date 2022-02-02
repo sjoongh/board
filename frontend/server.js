@@ -11,18 +11,29 @@ const dbPath = path.join(__dirname, '/data/data.json');
 
 // CONFIGURATION
 app.use("/static", express.static(path.resolve(__dirname, "src", "static")));
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // 4.16이전
+// app.use(express.json()) --> 4.16이후
 
 // ROUTES
+
+let test = {};
+
+test = JSON.parse(
+    fs.readFileSync(dbPath, "utf8")
+);
+
+app.get("/data.json", (req, res, next) => {
+    res.json(test);
+})
 
 // get board
 // 비동기로 완성 해야함..
 app.get("/", (req, res) => {
     res.sendFile(path.resolve("src", "index.html"));
-    fs.readFile(dbPath, 'utf8', (err, data) => {
-        if (err) throw err;
-        console.log(data,'sibal'); // 얘를 Home에 뿌려줌
-    })
+    // fs.readFile(dbPath, 'utf8', (err, data) => {
+    //     if (err) throw err;
+    //     console.log(data,'sibal'); // 얘를 Home에 뿌려줌
+    // })
 });
 
 // create board
