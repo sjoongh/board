@@ -3,6 +3,7 @@ import Posts from "./pages/Posts.js";
 import Settings from "./pages/Settings.js";
 import NotFound from "./pages/NotFound.js";
 
+// router 설정들
 const router = async () => {
     const routes = [
         { path: "/", view: Home },

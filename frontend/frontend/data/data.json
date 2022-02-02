@@ -1,4 +1,5 @@
-{ "users": [
+{ 
+    "board": [
     {
         "no": "1",
         "title": "output",
