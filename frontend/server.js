@@ -22,11 +22,17 @@ test = JSON.parse(
     fs.readFileSync(dbPath, "utf8")
 );
 
+// data.json파일에 접근
 app.get("/data.json", (req, res, next) => {
     res.json(test);
 })
 
-// get board
+// 원하는 data 출력
+// let item = fetch("http://localhost:3000/data.json")
+//     .then(response => response.json())
+//     .then(json => console.log(json.board[0].name));
+
+// 홈화면 index.html표시
 // 비동기로 완성 해야함..
 app.get("/", (req, res) => {
     res.sendFile(path.resolve("src", "index.html"));
