@@ -27,6 +27,20 @@ app.get("/data.json", (req, res, next) => {
     res.json(test);
 })
 
+fetch("http://localhost:3000/create", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        title: "Test",
+        body: "I am testing!",
+        userId: 1,
+    }),
+})
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+
 // 원하는 data 출력
 // let item = fetch("http://localhost:3000/data.json")
 //     .then(response => response.json())
