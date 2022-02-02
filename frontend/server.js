@@ -14,25 +14,29 @@ app.use("/static", express.static(path.resolve(__dirname, "src", "static")));
 app.use(bodyParser.json());
 
 // ROUTES
-// app.get('/', (req, res) => res.render('index'));
 
-app.get("/*", (req, res) => {
+// get board
+// 비동기로 완성 해야함..
+app.get("/", (req, res) => {
     res.sendFile(path.resolve("src", "index.html"));
-    fs.readFile(dbPath, 'urf8', (err, data) => {
+    fs.readFile(dbPath, 'utf8', (err, data) => {
         if (err) throw err;
-        const { datas } = JSON.parse(data);
-        console.log(datas);
-        console.log(res.json(datas));
+        console.log(data,'sibal'); // 얘를 Home에 뿌려줌
     })
 });
 
-// get board;
-
 // create board
-
+app.post("/create", (req, res) => {
+    res.sendFile(path.resolve("src", "index.html"));
+})
 // update board
+app.post("/create", (req, res) => {
 
+})
 // delete board
+app.post("/create", (req, res) => {
+
+})
 
 app.listen(3000, () => console.log('Server is running... http://localhost:3000'));
 
