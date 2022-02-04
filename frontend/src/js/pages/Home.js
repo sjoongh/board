@@ -3,19 +3,14 @@ export default class {
         document.title = "Home";
     }
     async getHtml() {
-        // fetch로 신호 보내면 백쪽에서 해당 data 전달
-        // fetch("./data.json")
-        //     .then(response => {
-        //         // console.log(response.json());
-        //         return response.json();
-        //     }).then(jsondata => console.log(jsondata));
-        // for (var i = 0; i < dataJson.board.length; i++) {
-        //     console.log(dataJson.board[i]);
-        //     var no = dataJson.board[i].no;
-        //     var title = dataJson.board[i].title;
-        //     var name = dataJson.board[i].name;
-        //     var date = dataJson.board[i].date;
-        // }
+        const data = JSON.parse(await ajax('GET',
+        `http://localhost:8080/data.json`));
+        // data크기만큼 게시물 출력함
+        for (const comment of data.board) {
+            // 원하는 게시물 출력
+            const li = document.createElement('li');
+            
+        }
         return `
         
             <h1>This is Home Page</h1>
@@ -23,16 +18,6 @@ export default class {
     }
 }
 
-{/* <ul>
-            <li>${no}</li>
-            <li>${name}</li>
-            <li>${title}</li>
-            <li>${date}</li>
-        </ul>
-            <div>${no}</div>
-            <div>${title}</div>
-            <div>${name}</div>
-            <div>${date}</div> */}
 
 // 게시판 기능 추가
 // function loadBoard() {

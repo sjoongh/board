@@ -1,7 +1,7 @@
 
 import Ajax from './ajax';
 import Home from "./pages/Home.js";
-import Posts from "./pages/Posts.js";
+import Board from "./pages/Board.js";
 import Settings from "./pages/Settings.js";
 import NotFound from "./pages/NotFound.js";
 
@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound.js";
 const router = async () => {
     const routes = [
         { path: "/", view: Home },
-        { path: "/posts", view: Posts },
+        { path: "/board", view: Board },
         { path: "/settings", view: Settings },
     ];
 
