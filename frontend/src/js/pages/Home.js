@@ -1,3 +1,5 @@
+import ajax from '../ajax.js';
+
 export default class {
     constructor() {
         document.title = "Home";
@@ -11,9 +13,9 @@ export default class {
             const li = document.createElement('li');
             
         }
-        return `
-        
+        return `     
             <h1>This is Home Page</h1>
+            <div>${data}<div>
         `;
     }
 }
