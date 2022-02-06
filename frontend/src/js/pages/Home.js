@@ -1,11 +1,11 @@
-import ajax from '../ajax.js';
+import Ajax from '../ajax.js';
 
 export default class {
     constructor() {
         document.title = "Home";
     }
     async getHtml() {
-        const data = JSON.parse(await ajax('GET',
+        const data = JSON.parse(await Ajax('GET',
         `http://localhost:8080/data.json`));
         // data크기만큼 게시물 출력함
         for (const comment of data.board) {
@@ -13,7 +13,7 @@ export default class {
             const li = document.createElement('li');
             
         }
-        return `     
+        return `
             <h1>This is Home Page</h1>
             <div>${data}<div>
         `;

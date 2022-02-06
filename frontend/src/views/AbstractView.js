@@ -1,10 +1,9 @@
 export default class {
     constructor(params) {
         this.params = params;
-        this.url = `in root url here`;
-        // return 값
+        this.url = 'in root url here';
         this.converDate = date => {
-            return `${date.getFullYear()}`
+            return `${date.getFullYear()}-${date.getMonth() +1}-${date.getDate()} ${date.getHours() +1}:${date.getMinutes()}`;
         }
     }
 
@@ -13,7 +12,7 @@ export default class {
     }
 
     attachEvent() {}
-
+    
     async getHtml() {
         return "";
     }
