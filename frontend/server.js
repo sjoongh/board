@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
     res.sendFile(path.resolve("src", "index.html"));
     // fs.readFile(dbPath, 'utf8', (err, data) => {
     //     if (err) throw err;
-    //     console.log(data,'sibal'); // 얘를 Home에 뿌려줌
+    //     console.log(data,'sibal4\'); // 얘를 Home에 뿌려줌
     // })
 });
 
@@ -47,6 +47,7 @@ app.get('/board', (req, res) => {
 
         const { boardata } = JSON.parse(data);
         res.json(boardata);
+        console.log(boardata);
     })
 })
 
@@ -69,7 +70,7 @@ app.post("/create", (req, res) => {
 })
 // update board
 app.post("/update", (req, res) => {
-    const result {};
+    const result = {};
     const { title, name } = req.params;
 
     fs.readFile(dbPath, 'utf8', (err, data) => {
