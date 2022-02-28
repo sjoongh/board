@@ -1,50 +1,65 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-const isDev = process.env.NODE_ENV === 'development' // 모드 구분
 module.exports = {
-  mode: isDev ? 'development' : 'production',
-  devtool: "source-map", // 개발자 모드에서 원본 코드처럼 볼 수 있음
-  entry: isDev ? ['webpack-hot-middleware/client', './src/server/entry.js'] : "./src/index.js",
+  entry: {
+    index: "./src/index.html",
+  },
   output: {
-    filename: "app.js",
-    path: path.resolve(__dirname, "public"),
-    publicPath: "http://localhost:3000/public" // 미들웨어 장소
+    path: path.resolve(__dirname, "assets"),
+    filename: "src/[name].js",
+  },
+  devServer: {
+    port: 8000,
   },
   module: {
     rules: [
+      // {
+      //   test: /\.tsx?$/,
+      //   exclude: /node_modules/,
+      //   use: "ts-loader",
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              ["@babel/preset-env", { modules: false }] // modules:false = import되지 않은 export들을 정리해줌 (트리쉐이킹)
-            ],
-          },
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(svg|gif)$/,
+        loader: "file-loader",
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
         },
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
-        test: /\.(png|jpg)$/,
-        use: ["file-loader"],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "img/[name][ext]",
+        },
       },
     ],
   },
+  // resolve: {
+  //   extensions: [".tsx", ".ts", ".js"],
+  // },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "src/index.html", // html 파일도 같이 bundle
+    new MiniCssExtractPlugin({ filename: "css/style.css" }),
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html",
     }),
-    new MiniCssExtractPlugin({ // style 태그 대신 css 파일도 함께 bundle
-      filename: 'style.css',
-      chunkFilename: 'style.css',
-    }),
-    new webpack.HotModuleReplacementPlugin()
   ],
+  devtool: "inline-source-map",
+  mode: "development",
 };
