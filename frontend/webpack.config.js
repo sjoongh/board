@@ -1,43 +1,50 @@
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
+const isDev = process.env.NODE_ENV === 'development' // 모드 구분
 module.exports = {
-  // enntry file
-  // ./src/static/js/index.js
-  entry: ['@babel/polyfill', '../src/js/index.js'],
-  // 컴파일 + 번들링된 js 파일이 저장될 경로와 이름 지정
+  mode: isDev ? 'development' : 'production',
+  devtool: "source-map", // 개발자 모드에서 원본 코드처럼 볼 수 있음
+  entry: isDev ? ['webpack-hot-middleware/client', './src/server/entry.js'] : "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: "app.js",
+    path: path.resolve(__dirname, "public"),
+    publicPath: "http://localhost:3000/public" // 미들웨어 장소
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        include: [
-          // src
-          path.resolve(__dirname, 'src')
-        ],
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-class-properties']
-          }
-        }
-      }
-    ]
+            presets: [
+              ["@babel/preset-env", { modules: false }] // modules:false = import되지 않은 export들을 정리해줌 (트리쉐이킹)
+            ],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(png|jpg)$/,
+        use: ["file-loader"],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: "./src/index.html"
-    })
+      template: "src/index.html", // html 파일도 같이 bundle
+    }),
+    new MiniCssExtractPlugin({ // style 태그 대신 css 파일도 함께 bundle
+      filename: 'style.css',
+      chunkFilename: 'style.css',
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
-  devtool: 'source-map',
-  devServer: {
-    host: "localhost",
-    port: 8080,
-  },
-  mode: 'development'
 };

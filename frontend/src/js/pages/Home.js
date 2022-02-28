@@ -8,14 +8,13 @@ export default class {
         const data = JSON.parse(await Ajax('GET',
         `http://localhost:8080/data.json`));
         // data크기만큼 게시물 출력함
-        for (const comment of data.board) {
-            // 원하는 게시물 출력
-            const li = document.createElement('li');
-            
-        }
+        // for (const comment of data.board) {
+        //     // 원하는 게시물 출력
+        //     const li = document.createElement('li');
+        // }
+        // <div>${data}<div>
         return `
             <h1>This is Home Page</h1>
-            <div>${data}<div>
         `;
     }
 }

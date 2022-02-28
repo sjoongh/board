@@ -14,6 +14,7 @@ const Error404 = {
         return `
         <section>
             <h1 class="text-center">Error 404. Page not found.</h1>
+            <img src="../../404.png">
         </section>`;
     }
 };
