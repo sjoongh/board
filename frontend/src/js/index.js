@@ -1,38 +1,39 @@
 
-import Ajax from './ajax';
-import Home from "./pages/Home.js";
-import Board from "./pages/Board.js";
-import Settings from "./pages/Settings.js";
-import NotFound from "./pages/NotFound.js";
+// import Ajax from './ajax';
+// import Home from "../pages/Home.js";
+// import Board from "../pages/Board.js";
+// import Settings from "../pages/Settings.js.js";
+// import NotFound from "../pages/NotFound.js.js";
 
-// router 설정들
-const router = async () => {
-    const routes = [
-        { path: "/", view: Home },
-        { path: "/board", view: Board },
-        { path: "/settings", view: Settings },
-    ];
+// // router 설정들
+// const router = async () => {
+//     const routes = [
+//         { path: "/", view: Home },
+//         { path: "/board", view: Board },
+//         { path: "/settings", view: Settings },
+//     ];
 
-    const pageMatches = routes.map((route) => {
-        return {
-            route, // route: route
-            isMatch: route.path === location.pathname,
-        };
-    });
-    let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
+//     const pageMatches = routes.map((route) => {
+//         return {
+//             route, // route: route
+//             isMatch: route.path === location.pathname,
+//         };
+//     });
+//     let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
 
-    if (!match) {
-        match = {
-            route: location.pathname,
-            isMatch: true,
-        };
-        const page = new NotFound();
-        document.querySelector("#root").innerHTML = await page.getHtml();
-    } else {
-        const page = new match.route.view();
-        document.querySelector("#root").innerHTML = await page.getHtml();
-    }
-};
+//     if (!match) {
+//         match = {
+//             route: location.pathname,
+//             isMatch: true,
+//         };
+//         const page = new NotFound();
+//         document.querySelector("#root").innerHTML = await page.getHtml();
+//     } else {
+//         const page = new match.route.view();
+//         document.querySelector("#root").innerHTML = await page.getHtml();
+//     }
+// };
+// =================================================
 
 // 뒤로 가기 할 때 데이터 나오게 하기 위함
 // window.addEventListener("popstate", () => {
@@ -63,4 +64,16 @@ const router = async () => {
 // window.onload = () => {
 //     router();
 // }
+
+// ========== 
+// import * as styles from "../public/css/style.scss";
+import App from "./App";
+import { EventManager } from "./core/eventManager";
+import { Giact } from "./core/giact";
+
+// styles;
+
+Giact.render(App, document.getElementById("root"));
+
+EventManager.regist();
 

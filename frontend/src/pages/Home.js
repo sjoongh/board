@@ -1,4 +1,4 @@
-import Ajax from '../ajax.js';
+import Ajax from '../js/ajax.js';
 
 export default class {
     constructor() {
