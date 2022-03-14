@@ -1,4 +1,3 @@
-// 씹 완벽
 const h =
   (type) =>
   (props, children= []) => {

@@ -1,9 +1,9 @@
 const express = require('express');
 const webpack = require('webpack');
-const webpackConfig = require('../../webpack.config.js');
+const webpackConfig = require('./webpack.config.js');
 const webpackDevMidddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const getApi = require('./getApi.js');
+const getApi = require('./src/server/getApi.js');
 
 const app = express();
 const compiler = webpack(webpackConfig);

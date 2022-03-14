@@ -1,47 +1,47 @@
-// 씹 완벽
-import EventManager from "./eventManager";
-import { VirtualDom } from "./virtualDom";
-
-export const Giact = (() => {
-  let _state= [];
-  let _render;
-  let _root;
-  let _page;
-  let idx = 0;
-
-  const render = (component, $parent) => {
-    if (!_root) _root = component();
-    if (!_render)
-      _render = () => {
-        VirtualDom.render(_root.template(), $parent);
-        EventManager.regist();
-      };
-    _render();
-  };
-  const useRouter = (
-    initPage) => {
-    _page = initPage;
-    const getPage = () => _page;
-    const setPage = (newPage) => {
-      _page = newPage;
-      if (_render) _render();
+exports.__esModule = true;
+exports.Giact = void 0;
+var eventManager_1 = require("./eventManager");
+var virtualDom_1 = require("./virtualDom");
+exports.Giact = (function () {
+    var _state = [];
+    var _render;
+    var _root;
+    var _page;
+    var idx = 0;
+    var render = function (component, $parent) {
+        if (!_root)
+            _root = component();
+        if (!_render)
+            _render = function () {
+                virtualDom_1.VirtualDom.render(_root.template(), $parent);
+                eventManager_1["default"].regist();
+            };
+        _render();
     };
-    return [getPage, setPage];
-  };
-  const useState = () => {
-    const i = idx++;
-    _state[i] = initState;
-    const getState = () => _state[i];
-    const setState = () => {
-      _state[i] = newState;
-      if (_render) _render();
+    var useRouter = function (initPage) {
+        _page = initPage;
+        var getPage = function () { return _page; };
+        var setPage = function (newPage) {
+            _page = newPage;
+            if (_render)
+                _render();
+        };
+        return [getPage, setPage];
     };
-    return [getState, setState];
-  };
-  const clear = () => {
-    _state = _state.slice(0, 1);
-    idx = 0;
-  };
-
-  return { useState, render, clear, useRouter };
+    var useState = function (initState) {
+        var i = idx++;
+        _state[i] = initState;
+        var getState = function () { return _state[i]; };
+        var setState = function (newState) {
+            _state[i] = newState;
+            if (_render)
+                _render();
+        };
+        return [getState, setState];
+    };
+    var clear = function () {
+        _state = _state.slice(0, 1);
+        idx = 0;
+    };
+    return { useState: useState, render: render, clear: clear, useRouter: useRouter };
 })();
