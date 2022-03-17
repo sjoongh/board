@@ -81,3 +81,9 @@ export const favoriteRepository = new Repository("favorite");
 
 // 사용부
 const favorite = favoriteRepository.get();
+
+puppeteer의 경우 브라우저를 띄워서 파싱 작업을 하는데 브라우저를 정교하게 컨트롤 하여 데이터를 가져오는 상황이 아니라면 chreeio와 axios를 이용해서 단순하게 HTML Text만 파싱해도 충분합니다.
+
+ service layer로 분리해주면 어떨까요?
+보통 서버에서는 MVC Pattern을 많이 사용하는데,
+Controller는 Service에 대부분의 로직을 위임하고 단순하게 request와 response만 handling 합니다.
