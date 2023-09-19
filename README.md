@@ -2,22 +2,18 @@
 
 ## 1. 기술스택
 
-- vanilla javascript `필수`
-- typescript `선택`
-- bundler `필수`
-    - `webpack` or `vite` or `rollup` or `parcel`중 택 1
-- backend `필수`
+- vanilla javascript
+- typescript
+- bundler
+    - `webpack` OR `parcel` 고민..
+- backend
     - `node.js`
-    - `express.js` or `nest.js`중 택 1
-- test `선택`
+    - `express.js`
+- test
     - unit: `jest`
-    - e2e: `cypress`, `supertest`
+    - e2e: `cypress` OR `supertest`
 
 ---
-
-## 2. 기능 요구사항
-
-* 인증(로그인) 기능은 **불필요**합니다.
 
 ### (1) 게시글 목록
 
@@ -62,15 +58,12 @@
 ## 3. 기술 요구사항
 
 ### (1) Front-End
-
-- **구현에 필요한 프레임워크 및 라이브러리 절대 사용 금지**
 - **typescript + webpack + babel**를 이용하여 개발환경 구축하기
     - 프론트엔트 코드를 webpack으로 build하여 production code 생성하기
     - build된 code를 server에 연동하여 사용할 것
 - 컴포넌트 기반 설계
-    - **본인이 직접 할 것. 타인의 코드 사용 금지. 타인의 코드를 사용할 경우 배점 없음.**
     - 상태(State)를 기반으로 렌더링하는 형태로 작성할 것
-    - 설계는 자신 있는 형태(객체지향 or 함수지향)로 해주세요!
+    - 설계는 자신 있는 형태(객체지향 or 함수지향)로
     - `Observer Pattern`을 이용해서 상태가 변경될 때 자동으로 렌더링 되도록 만들어보기
     
     ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a221e77-d41d-4aea-bff3-dbb93de0b485/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a221e77-d41d-4aea-bff3-dbb93de0b485/Untitled.png)
@@ -79,7 +72,7 @@
     - Router 만들어서 사용해보기
         - **페이지간에 이동이 발생할 때 새로고침이 발생하지 않도록 한다.**
         - 새로고침을 했을 경우에도 현재 페이지의 내용을 유지해야 한다.
-        - 위의 기능들은 빌드 후에 서버에서 붙였을 때에 정상적으로 작동해야 한다. 그렇지 않을 경우 배점 없음.
+        - 위의 기능들은 빌드 후에 서버에서 붙였을 때에 정상적으로 작동해야 한다.
 - 전역 상태관리를 위한 Store 만들기
     - Vuex, Redux, Mobx, Recoil 등과 같은 상태관리 라이브러리를 **직접 만들어서 사용해보기**
 - 이벤트 관리를 최적화하기
@@ -100,7 +93,6 @@
         - ex) 게시물 조회, 페이징 등
     - POST, DELETE, PUT 과 관련된 Method로 요청을 보낼 경우, 캐싱된 데이터를 갱신함
         - ex) 게시물 추가/수정/삭제 등
-- style에 대해선 따로 평가하지 않을 예정입니다.
 
 ### (2) Back-end
 
@@ -154,17 +146,14 @@
 
 ## (3) 테스트 코드
 
-- **테스트 작성 또한 선택입니다.**
 - 프론트엔드
     - e2e test
         - [cypress](https://www.cypress.io/) 등의 도구를 활용하여 기능 요구사항에 대한 테스트 진행
         - 테스트만 돌려도 기능이 구현 되었는지 확인할 수 있으면 좋음
     - unit test
-        - 자유롭게 작성해볼 것
-        - test coverage를 기준으로 평가할예정
+        - test coverage 90% 이상
 - 백엔드
     - e2e test
         - [supertest](https://www.npmjs.com/package/supertest) 등을 활용하여 endpoint에 대한 테스트 진행
     - unit test
-        - 자유롭게 작성해볼 것
-        - test coverage를 기준으로 평가할예정
+        - test coverage 90% 이상
